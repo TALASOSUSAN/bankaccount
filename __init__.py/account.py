@@ -1,177 +1,159 @@
-from datetime import datetime
 class BankAccount:
-    bank="KCB"
-    deposit_history = []
-    loan = {}
-    loan_balance = 0
-    applied_for_loan = False
-    # Play around with
-    _MAXIMUM_LOAN_BORROWABLE = 350000
-    _LOAN_INTEREST_RATE = .12
-
-    #Constructor
-    def __init__(self, first_name, second_name):
-        self.first_name=first_name
-        self.second_name=second_name
-        self.balance=0
-
-    #Returns the current time in string form
-    def _getCurrentTime(self):
-        now = datetime.now()
-        now_formatted = now.strftime("%b %d %Y, %H:%M:%S")
-        return now_formatted
-
-    def account_name(self):
-        name= "{} account for {} {} ".format(self.bank, self.first_name,self.second_name)
-        return name
-    def deposit(self,amount):
-        if amount >0:
-            self.balance+=amount
-            timeDate = self._getCurrentTime()
-            transaction_details = {"amount": amount, "date":timeDate}
-            self.deposit_history.append(transaction_details)
-            print("You have deposited {} to your account at {}".format(amount, timeDate))
-        else:
-            print("Too low ")
-  
-  
-    def withdraw(self, amount):
-        if amount > 0:
-            self.balance -= amount
-            print("You have withdrawed {} from your account".format(amount))
-        else:
-            print("Amount too low")
-    def get_balance(self):
-        return "The balance of {} is {} ".format(self.account_name(),self.balance)
+    bank ="KCB"
     
-    def get_statement(self):
-        for statement_item in self.deposit_history:
-            print("On",statement_item['date'], ", you deposited KES", statement_item['amount'])
-    
-    def getLoanBalance(self):
-        print("Your balance is KES",self.loan_balance,"for loan KES", self.loan["amount_borrowed"],"Borrowed on", self.loan["date"])
-    def requestLoan(self, amount):
-        # When customer has no Loan balance Give a loan
-        if not self.loan_balance > 0:
-            timeDate = self._getCurrentTime()
-            self.loan["date"] = timeDate
-            self.loan["amount_borrowed"] = amount
-            self.loan_balance += amount
-        #Else Deny loan
-        else:
-            print("Err:Loan Request Failed Reason:", end="")
-            print(self.getLoanBalance())
-            
-    def payLoan(self,amount):
-        if self.loan_balance == 0:
-            print("You have no loan balance")
-        elif amount > self.loan_balance:
-            self.loan_balance = 0
-        elif amount <= self.loan_balance:
-            self.loan_balance -= amount
+    def _init_(self,first_name,last_name,phone_number,bank):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.balance = 0
+        self.phone_number=phone_number
+        self.bank=bank
+        self.deposit=deposit[]
+        self.withdraw=withdraw[]
 
-        return
+        def get_currentTime(self);
+        now=datetime.now()
+        time_formatted=now.strftime("%b %d %Y,%H %M %S")
+        return time_formatteds
 
-    
-acc1=BankAccount("Talaso","Susan")
-acc2=BankAccount("Eyan", "Achwa")
-
-acc1.deposit(-1000)
-acc2.deposit(50)
-acc1.deposit(100)
-acc2.deposit(30)
-acc1.withdraw(10)
-acc2.withdraw(30)
-acc1.withdraw(20)
-acc2.withdraw(10)
-
-acc2.get_statement()
-acc1.requestLoan(3000)
-acc1.requestLoan(777)
-acc1.payLoan(250)
-acc1.getLoanBalance()
-print(acc1.get_balance())
-print(acc2.get_balance())
-
-print(acc1.account_name())
-print(acc2.account_name())
-
-File "<stdin>", line 1
-    while True print("Hello Akirachix")
-                   ^
-SyntaxError: invalid syntax
-
-while True:
-    x = 10/0
-    Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ZeroDivisionError: division by zero
-echo("Hello Akirachix")Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'echo' is not defined
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
-try:
-    do_something
-except:
-    handle_exception
-
-    try:
-    1 + '1'
-except:
-    print('there was an error')
-
-    try:
-    1 +  '1'
-except TypeError:
-    print('TypeError exception raised')
-
-    def deposit(self, amount):
-        try:
-            amount + 1
-        except TypeError:
-            print("You must enter the amount in figures")
+    def get_loan(self,amount):
+         try:
+            amount +1
+            expect TypeError:
+            print ("You can only enter a digit value")
             return
 
-        if amount <= 0:
-            print("You cannot deposit zero or negative")
+        if amount<=0:
+            print("A loan cannot be offered at the moment")
+            else:
+                if self.loan=amount
+                print("You have sucessfully recieved a loan of {}".format(amount))
+    
+    def account_name(self):
+        name ="{} account for {} {}".format(self.bank,self.first_name,self.last_name)
+        return name
+    
+    def  deposit(self,amount):
+        try:
+            amount +1
+            expect TypeError:
+            print ("You can only enter a digit value")
+            return
+
+        if amount =0:
+            print("You cannot deposit a negative amount")
         else:
-            self.balance += amount
-            self.deposits.append(amount)
-            print("You have deposited {} to {}".format(amount, self.account_name()))
+            self.balance +=amount
+            self.deposit.append(deposit)  
+            time=date.time()
+            formated_time=time.strftime{"%m %drd %Y, %H;%M:%S" }
+            print("You have deposited {} on {} ".format(amount,self.account,formated_time))
+      
 
-            time = datetime.now()
+    def get_balance(self):
+        return "{} balance is {} ".format(self.account_name(),self.balance)
 
-print(time)
+    def withdraw(self,amount):
+         try:
+            amount +1
+            expect TypeError:
+            print ("You can only enter a digit value")
+            return
 
-print(time.year)
+      if amount=0:
+      print("You cannot withdraw zero amount")
+      elif amount >self.balance:
+          print("You dont have enough balance to make this request")
+      else:
+          self.balance>=amount
+          self.withdraw.append(amount)   
+           formated_time=stime.strftime{"%m %drd %Y, %H;%M:%S"}
+          print("You have withdrawn {} from {}".format (self.account_name,self.amount,formated_time))
 
-print(time.month)
+    def deposit_statement(self):
+      for deposit in self.deposit:
+          time=diposit['time']
+          formated_time=time.strftime{"%m %drd %Y, %H;%M:%S"}
+          amount=deposit["amount"]
+          statement="You have deposited {} on {}. Your new balance is {}".format(self.amount,formated_time,self.balance)
+          print(statement)
+     
 
-print(time.day)
 
-print(time.hour)
+def  withdraw _ statement(self,amount):
+   for withdraw in self.withdrawa:
+       time=deposit["time"]
+       formated_time=time.strftime{"%m %drd %Y, %H:%M:%S"}
+       amount withdraw=["amount"]
+       statement="You have sucessfully withdrawn {} on {}".format(amount,formated_time)
+       print (statement)
 
-print(time.minute)
+def pay_loan(self,amount):
+     try:
+            amount +1
+            expect TypeError:
+            print ("You can only enter a digit value")
+            return
 
-print(time.second)
+    if amount<=0:
+    print(" You have insufficient balance to repay the loan")
+    else:
+        if self.loan==0:
+            print("You don't have a loan at the moment")
+     else:
+         if amount> self.loan:
+             print("Your loan is {}, an amount less or equal is required".format(self.loan))
 
-print(time.microsecond)
+             def __init__self(self,first_name, second_name, phone_number, service_provider);
+             self.service_provider=service_provider
+             self.airtime=[]
+             self.bills=[]
+             self.money=[]
+             self.recieved=[]
+             super().__init__(first_name, second_name, phone_number)
 
-from datetime import datetime
+             transaction_details={"amount" amount,"date":timeDate}
+             self.airtime.append(transaction_details)
+             print("you have bought airtime worth {} on {}", format(amout,timeDate))
 
-now = datetime.now()
+             def paybills(self,amount):
+        try: 
+            amount-1
+        except TypeError:
+            print("please enter amount in figures")
+            return
+        if amount>self.balance:
+            print("You have insufficient balance.Your balance is {}".format(self.balance))
 
-year = now.strftime("%Y")
-print("The year is {}".format(year))
-
-month = now.strftime("%m")
-print("The month is {}".format(month))
-
-time = now.strftime("%H:%M:%S")
-print("The time is {}".format(time))
-
-date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-print("The date and time is {}".format(date_time))
-
+        else:
+            self.balance-=amount
+            time=datetime.now()
+            paybills={
+                "time":time
+                "paybills":amount
+            }
+            self.paybills.append(paybills)
+            print("you have paid bills worth {}.your balance is {}".format(amount,self.get_formatted_time(time)))
+    def send_money(self,amount):
+        try:
+            amount-1
+        except TypeError:
+            print("please enter amount in figures") 
+            return
+            if amount>self.balance:
+                print("failed.insuffcient fundsin your account.your balance is {}".format(self.balance))
+                else:
+            self.balance-=amount
+            time=datetime.now()
+            money={
+                "time":time
+                "money":amount
+            }
+            self.money.append(money)
+            print(" confirmed  you have sent {} .your balance is {}".format(amount,self.get_formatted_time(time)))
+    def receive_money(self):
+        time=datetime.now()
+        money_received={
+            "time":time
+            return  "You have received {}.your balane is {}".format(self.get_formatted_time)
+            
+        }
